@@ -7,14 +7,12 @@ export default function Summoner() {
 
   const [championsInfo, setChampionsInfo] = useState<any>([])
   const [championsName, setChampionsName] = useState<any>([])
+  const [searchTerm, setSearchTerm] = useState<any>('')
 
-  useEffect(() => {
-    fetchSummonerInfo();
-  }, []);
 
   const fetchSummonerInfo = async () => {
     try {
-      const response = await fetch('api/champions');
+      const response = await fetch('api/champions/champions');
       const data: any = await response.json();
 
       setChampionsInfo(data.data);
@@ -23,12 +21,20 @@ export default function Summoner() {
       console.error('Erro ao buscar informações do invocador:', error);
     }
   };
+  
+  useEffect(() => {
+    fetchSummonerInfo();
+  }, []);
+
+  const filteredChampions = championsName.filter((name: any) => name.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
     <>
       <div className={styles.body}>
-        <Search />
-        {championsName.map((name: any, i: any) => {
+        <Search onSearch={(value: any) => {
+          setSearchTerm(value);
+        }} />
+        {filteredChampions.map((name: any, i: any) => {
           return <ChampionCard key={i} championName={name} championInfo={championsInfo[name]} />
         })}
       </div>

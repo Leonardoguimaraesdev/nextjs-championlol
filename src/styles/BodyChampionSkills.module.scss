@@ -1,0 +1,102 @@
+.bodyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    height: 100%;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Estilo para a track (pista) da scrollbar */
+    &::-webkit-scrollbar-track {
+        background: black;
+    }
+
+    /* Estilo para a handle (alça) da scrollbar */
+    &::-webkit-scrollbar-thumb {
+        background: #CBA757;
+        border-radius: 10px;
+    }
+
+    .cardChampionSkills {
+        display: flex;
+        width: 50%;
+        height: 55%;
+        border-radius: 30px;
+        background-color: rgba(0, 0, 0, 0.801);
+
+        .leftContainer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 26%;
+            height: 100%;
+
+        }
+
+        .rightContainer {
+            display: flex;
+            flex-direction: column;
+            width: 74%;
+            height: 100%;
+
+            .title {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                width: 100%;
+                height: 20%;
+                color: #CBA757;
+                font-size: 1.8rem;
+                padding-bottom: 20px;
+
+            }
+
+            .skills {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 20%;
+
+                .skillsP, .skillsQ, .skillsW, .skillsE, .skillsR{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 10%;
+                    height: 100%;
+                    color:#CBA757;
+
+                    .image{
+                        border-radius:25px;
+                        border: 1px solid #CBA757;
+                    }
+
+                    p{
+                        margin-bottom: 10px;
+                        font-size: 1.2rem;
+                    }
+                }
+
+            }
+
+            .championDescription {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                width: 100%;
+                height: 60%;
+                padding: 0 20px 50px 20px;
+                color: #CBA757;
+                font-size: 1.2rem;
+                text-align: justify;
+
+            }
+        }
+    }
+
+}
