@@ -7,6 +7,8 @@
     overflow-y: scroll;
     height: 100%;
 
+    
+
     button {
         width: 60px;
         height: 30px;
@@ -39,6 +41,24 @@
         border-radius: 30px;
         background-color: rgba(0, 0, 0, 0.801);
 
+        @media (max-width: 1024px) {
+            flex-direction: column;
+            height: 80%;
+            width: 80%;
+
+        }
+
+        @media (max-width: 768px) {
+            height: 90%;
+
+        }
+
+        @media (max-width: 480px) {
+            width: 90%;
+
+
+        }
+
         .leftContainer {
             display: flex;
             justify-content: flex-end;
@@ -46,9 +66,36 @@
             width: 26%;
             height: 100%;
 
+            @media (max-width: 1024px) {
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 40%;
+
+            }
+
+            @media (max-width: 480px) {
+                width: 100%;
+                height: 25%;
+
+            }
+
             img {
                 max-width: 100%;
                 height: auto;
+
+                @media (max-width: 1444px) {
+                    max-height: 90%;
+                    width: 90%;
+
+                }
+
+                @media (max-width: 1024px) {
+                    max-height: 90%;
+                    width: auto;
+
+                }
+
             }
         }
 
@@ -57,6 +104,21 @@
             flex-direction: column;
             width: 74%;
             height: 100%;
+
+            @media (max-width: 1024px) {
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 60%;
+    
+
+            }
+
+            @media (max-width: 480px) {
+                height: 75%;
+    
+
+            }
 
             .title {
                 display: flex;
@@ -68,14 +130,36 @@
                 font-size: 1.8rem;
                 padding-bottom: 20px;
 
+                @media (max-width: 1024px) {
+                    font-size: 1.5rem;
+                    height: 10%;
+                    align-items: center;
+                    padding-bottom: 0px;
+
+                }
+                
+
             }
 
             .skills {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
+                flex-wrap: wrap;
                 width: 100%;
                 height: 20%;
+
+                @media (max-width: 1024px) {
+                    height: 40%;
+
+
+                }
+
+                @media (max-width: 480px) {
+                    height: 30%;
+
+
+                }
 
                 .skillsP,
                 .skillsQ,
@@ -87,29 +171,54 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    width: 10%;
-                    height: 100%;
+                    width: 60px;
+                    height: 30%;
                     color: #CBA757;
 
-                    .tooltip{
+                    @media (max-width: 480px) {
+                        width: 100px;
+
+                    }
+                    
+
+                    
+
+                    .tooltip {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        top:-28px;
+                        top: -60px;
                         position: absolute;
-                        width: 120px;
-                        height: 25px;
+                        width: auto;
+                        height: auto;
                         background-color: #ce9417;
                         color: #fff;
                         border-radius: 5px;
                         margin-top: 10px;
                         font-size: 0.7rem;
+                        text-align: center;
+                        padding: 6px;
+
+                        @media (max-width: 380px) {
+                   
+                            top: -40px;
+                        }
+
+                       
                     }
 
                     .image {
                         border-radius: 25px;
                         border: 1px solid #CBA757;
                         transition: transform 0.2s ease-in-out;
+
+                        @media (max-width: 380px) {
+                   
+                            width: 30px;
+                            height:30px;
+        
+                        }
+
 
                         &:hover {
                             transform: scale(1.2)
@@ -120,6 +229,7 @@
                     p {
                         margin-bottom: 10px;
                         font-size: 1.2rem;
+
                     }
                 }
 
@@ -128,13 +238,37 @@
             .championDescription {
                 display: flex;
                 justify-content: center;
-                align-items: flex-end;
+                align-items: center;
                 width: 100%;
                 height: 60%;
                 padding: 0 20px 50px 20px;
                 color: #CBA757;
                 font-size: 1.2rem;
                 text-align: justify;
+
+                @media (max-width: 1444px) {
+                    font-size: 0.9rem;
+
+                }
+
+                @media (max-width: 1024px) {
+                    font-size: 1.2rem;
+                    height: 50%;
+                    padding: 0 20px 20px 20px;
+                }
+
+
+                @media (max-width: 480px) {
+                   
+                    height: 60%;
+
+                }
+                @media (max-width: 380px) {
+                   
+                    font-size: 1rem;
+
+
+                }
 
             }
         }
