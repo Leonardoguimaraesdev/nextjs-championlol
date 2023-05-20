@@ -175,10 +175,10 @@
                     height: 30%;
                     color: #CBA757;
 
-                    @media (max-width: 480px) {
-                        width: 100px;
+                    // @media (max-width: 480px) {
+                    //     width: 100px;
 
-                    }
+                    // }
                     
 
                     
@@ -212,7 +212,7 @@
                         border: 1px solid #CBA757;
                         transition: transform 0.2s ease-in-out;
 
-                        @media (max-width: 380px) {
+                        @media (max-width: 780px) {
                    
                             width: 30px;
                             height:30px;
@@ -257,16 +257,14 @@
                     padding: 0 20px 20px 20px;
                 }
 
+                @media (max-width: 780px) {
+                    font-size: 0.8rem;
+                }
+
 
                 @media (max-width: 480px) {
                    
                     height: 60%;
-
-                }
-                @media (max-width: 380px) {
-                   
-                    font-size: 1rem;
-
 
                 }
 
