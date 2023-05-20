@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const champion = req.query.name
 
   try {
-    const response = await axios.get(`https://ddragon.leagueoflegends.com/cdn/13.10.1/data/en_US/champion/${champion}.json`);
+    const response = await axios.get(`https://ddragon.leagueoflegends.com/cdn/13.10.1/data/pt_BR/champion/${champion}.json`);
     res.status(200).json(response.data);
   } catch (error) {
     console.error('Erro ao buscar informações dos campeões:', error);

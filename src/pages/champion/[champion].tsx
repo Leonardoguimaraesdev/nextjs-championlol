@@ -6,16 +6,12 @@ import { useRouter } from 'next/router'
 
 export default function ChampionSkills() {
     const router = useRouter()
-    const { champion } = router.query
-
-    const { myObject: encodedObject }:any = router.query;
-    const stringifiedObject = decodeURIComponent(encodedObject);
-    const myObject = JSON.parse(stringifiedObject);    
+    const { champion } = router.query  
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
             <Header />
-            <BodyChampionSkills championName={champion} championInfo={myObject}/>
+            <BodyChampionSkills championName={champion}/>
             <Footer />
         </div>
     );
