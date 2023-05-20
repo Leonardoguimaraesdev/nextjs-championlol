@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import styles from '../styles/BodyChampionSkills.module.scss'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -31,12 +31,12 @@ export default function BodyChampionSkills(props: any) {
 
     const championName = props.championName
 
-    const fetchSummonerInfo = async () => {
+    const fetchSummonerInfo = useCallback(async () => {
         try {
             const response = await fetch(`http://localhost:3000/api/spells/spells?name=${championName}`);
             const data: any = await response.json();
             const info = data.data
-
+            
             const championPassive = info[championName].passive.image.full
             const championPassiveName = info[championName].passive.name
             const championSpells = info[championName].spells
@@ -49,21 +49,22 @@ export default function BodyChampionSkills(props: any) {
             setSpellsSpellW(championSpells[1].id)
             setSpellsSpellE(championSpells[2].id)
             setSpellsSpellR(championSpells[3].id)
-
+            
         } catch (error) {
             console.error('Erro ao buscar informações do invocador:', error);
         }
-    };
+    }, [championName]);
 
     useEffect(() => {
         fetchSummonerInfo();
-    }, []);
-
+    }, [fetchSummonerInfo]);
+    
+    
     const goToChampionList = () => {
         router.push(`/`)
-
+        
     }
-
+    
     return (
         <>
             <div className={styles.bodyContainer}>
