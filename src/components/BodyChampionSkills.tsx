@@ -33,7 +33,7 @@ export default function BodyChampionSkills(props: any) {
 
     const fetchSummonerInfo = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/spells/spells?name=${championName}`);
+            const response = await fetch(`/api/spells/spells?name=${championName}`);
             const data: any = await response.json();
             const info = data.data
             
