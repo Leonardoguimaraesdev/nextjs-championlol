@@ -6,7 +6,7 @@ import axios from 'axios';
 
 export async function getServerSideProps() {
   try {
-    const { data } = await axios.get('http://localhost:3000/api/champions/champions');
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/champions/champions`);
 
     const initialChampionsInfo: Champion = data.data;
     const initialChampionsName: string[] = Object.keys(data.data);

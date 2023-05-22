@@ -10,7 +10,7 @@ export async function getServerSideProps(context:any) {
     const { query } = context;
     const name = query.name;
 
-    const { data } = await axios.get(`http://localhost:3000/api/spells/spells?name=${name}`);
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/spells/spells?name=${name}`);
     const championData = data
 
     return { props: { championData } };
