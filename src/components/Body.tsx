@@ -1,40 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/Body.module.scss'
 import ChampionCard from './ChampionCard';
 import Search from './Search';
+import { SummonerProps } from '../pages/index'
+import { Champion } from '../pages/index'
 
-export default function Summoner() {
+export default function Summoner({ initialChampionsInfo, initialChampionsName }: SummonerProps) {
 
-  const [championsInfo, setChampionsInfo] = useState<any>([])
-  const [championsName, setChampionsName] = useState<any>([])
-  const [searchTerm, setSearchTerm] = useState<any>('')
+  const [championsInfo, setChampionsInfo] = useState<Champion>(initialChampionsInfo)
+  const [championsName, setChampionsName] = useState<string[]>(initialChampionsName || [])
+  const [searchTerm, setSearchTerm] = useState<string>('')
 
-
-  const fetchSummonerInfo = async () => {
-    try {
-      const response = await fetch('api/champions/champions');
-      const data: any = await response.json();
-
-      setChampionsInfo(data.data);
-      setChampionsName(Object.keys(data.data));
-    } catch (error) {
-      console.error('Erro ao buscar informações do invocador:', error);
-    }
-  };
-  
-  useEffect(() => {
-    fetchSummonerInfo();
-  }, []);
-
-  const filteredChampions = championsName.filter((name: any) => name.toLowerCase().includes(searchTerm.toLowerCase()))
+  const filteredChampions = championsName.filter((name: string) => name.toLowerCase().includes(searchTerm.toLowerCase()))
 
   return (
     <>
       <div className={styles.body}>
-        <Search onSearch={(value: any) => {
+        <Search onSearch={(value: string) => {
           setSearchTerm(value);
         }} />
-        {filteredChampions.map((name: any, i: any) => {
+        {filteredChampions.map((name: string, i: number) => {
           return <ChampionCard key={i} championName={name} championInfo={championsInfo[name]} />
         })}
       </div>

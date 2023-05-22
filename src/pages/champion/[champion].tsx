@@ -2,16 +2,26 @@ import styles from '../styles/ChampionSkills.module.scss'
 import Header from '../../components/Header'
 import Footer from '@/components/Footer';
 import BodyChampionSkills from '@/components/BodyChampionSkills';
-import { useRouter } from 'next/router'
+import axios from 'axios';
 
-export default function ChampionSkills() {
-    const router = useRouter()
-    const { champion } = router.query  
+
+export async function getServerSideProps(context:any) {
+
+    const { query } = context;
+    const name = query.name;
+
+    const { data } = await axios.get(`http://localhost:3000/api/spells/spells?name=${name}`);
+    const championData = data
+
+    return { props: { championData } };
+}
+
+export default function ChampionSkills({ championData }: any) {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
             <Header />
-            <BodyChampionSkills championName={champion}/>
+            <BodyChampionSkills championData={championData} />
             <Footer />
         </div>
     );

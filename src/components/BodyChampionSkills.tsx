@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState } from 'react';
 import styles from '../styles/BodyChampionSkills.module.scss'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -8,17 +8,10 @@ import { useRouter } from 'next/router'
 export default function BodyChampionSkills(props: any) {
     const router = useRouter()
 
+    const championData = props.championData
 
-    const [info, setInfo] = useState<any>({})
-
-    const [spells, setSpells] = useState<any>('')
-    const [passiveName, setPassiveName] = useState<any>('')
-
-    const [spellP, setSpellsSpellP] = useState<any>('')
-    const [spellQ, setSpellsSpellQ] = useState<any>('')
-    const [spellW, setSpellsSpellW] = useState<any>('')
-    const [spellE, setSpellsSpellE] = useState<any>('')
-    const [spellR, setSpellsSpellR] = useState<any>('')
+    const obj = championData.data
+    const firstObject: any = Object.values(obj)[0];
 
     const [hoveringPassive, setHoveringPassive] = useState(false);
     const [hoveringQ, setHoveringQ] = useState(false);
@@ -26,45 +19,20 @@ export default function BodyChampionSkills(props: any) {
     const [hoveringE, setHoveringE] = useState(false);
     const [hoveringR, setHoveringR] = useState(false);
 
-    let infoChanged = info.title ? info.title.charAt(0).toUpperCase() + info.title.slice(1) : '';
+    const championName = firstObject.id
+    const title = firstObject.title.charAt(0).toUpperCase() + firstObject.title.slice(1)
+    const spells = firstObject.spells
+    const passiveName = firstObject.passive.name
+    const spellP = firstObject.passive.image.full
+    const spellQ = spells[0].id
+    const spellW = spells[1].id
+    const spellE = spells[2].id
+    const spellR = spells[3].id
 
-
-    const championName = props.championName
-
-    const fetchSummonerInfo = useCallback(async () => {
-        try {
-            const response = await fetch(`/api/spells/spells?name=${championName}`);
-            const data: any = await response.json();
-            const info = data.data
-            
-            const championPassive = info[championName].passive.image.full
-            const championPassiveName = info[championName].passive.name
-            const championSpells = info[championName].spells
-            const championInfo = info[championName]
-            setInfo(championInfo)
-            setSpells(championSpells)
-            setPassiveName(championPassiveName)
-            setSpellsSpellP(championPassive)
-            setSpellsSpellQ(championSpells[0].id)
-            setSpellsSpellW(championSpells[1].id)
-            setSpellsSpellE(championSpells[2].id)
-            setSpellsSpellR(championSpells[3].id)
-            
-        } catch (error) {
-            console.error('Erro ao buscar informações do invocador:', error);
-        }
-    }, [championName]);
-
-    useEffect(() => {
-        fetchSummonerInfo();
-    }, [fetchSummonerInfo]);
-    
-    
     const goToChampionList = () => {
         router.push(`/`)
-        
     }
-    
+
     return (
         <>
             <div className={styles.bodyContainer}>
@@ -74,7 +42,7 @@ export default function BodyChampionSkills(props: any) {
                         <Image className={styles.img} alt='Champion' width={230} height={410} src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championName}_0.jpg`} />
                     </div>
                     <div className={styles.rightContainer}>
-                        <div className={styles.title}>{infoChanged}</div>
+                        <div className={styles.title}>{title}</div>
                         <div className={styles.skills}>
                             <div className={styles.skillsP}
                                 onMouseEnter={() => setHoveringPassive(true)}
@@ -89,10 +57,10 @@ export default function BodyChampionSkills(props: any) {
                                 )}
                             </div>
                             <div className={styles.skillsQ}
-                             onMouseEnter={() => setHoveringQ(true)}
-                             onMouseLeave={() => setHoveringQ(false)}
+                                onMouseEnter={() => setHoveringQ(true)}
+                                onMouseLeave={() => setHoveringQ(false)}
                             >
-                                <p>W</p>
+                                <p>Q</p>
                                 <Image className={styles.image} alt='Champion' width={50} height={50} src={`https://ddragon.leagueoflegends.com/cdn/13.10.1/img/spell/${spellQ}.png`} />
                                 {hoveringQ && (
                                     <div className={styles.tooltip}>
@@ -101,10 +69,10 @@ export default function BodyChampionSkills(props: any) {
                                 )}
                             </div>
                             <div className={styles.skillsW}
-                             onMouseEnter={() => setHoveringW(true)}
-                             onMouseLeave={() => setHoveringW(false)}
+                                onMouseEnter={() => setHoveringW(true)}
+                                onMouseLeave={() => setHoveringW(false)}
                             >
-                                <p>Q</p>
+                                <p>W</p>
                                 <Image className={styles.image} alt='Champion' width={50} height={50} src={`https://ddragon.leagueoflegends.com/cdn/13.10.1/img/spell/${spellW}.png`} />
                                 {hoveringW && (
                                     <div className={styles.tooltip}>
@@ -113,8 +81,8 @@ export default function BodyChampionSkills(props: any) {
                                 )}
                             </div>
                             <div className={styles.skillsE}
-                             onMouseEnter={() => setHoveringE(true)}
-                             onMouseLeave={() => setHoveringE(false)}
+                                onMouseEnter={() => setHoveringE(true)}
+                                onMouseLeave={() => setHoveringE(false)}
                             >
                                 <p>E</p>
                                 <Image className={styles.image} alt='Champion' width={50} height={50} src={`https://ddragon.leagueoflegends.com/cdn/13.10.1/img/spell/${spellE}.png`} />
@@ -125,8 +93,8 @@ export default function BodyChampionSkills(props: any) {
                                 )}
                             </div>
                             <div className={styles.skillsR}
-                             onMouseEnter={() => setHoveringR(true)}
-                             onMouseLeave={() => setHoveringR(false)}
+                                onMouseEnter={() => setHoveringR(true)}
+                                onMouseLeave={() => setHoveringR(false)}
                             >
                                 <p>R</p>
                                 <Image className={styles.image} alt='Champion' width={50} height={50} src={`https://ddragon.leagueoflegends.com/cdn/13.10.1/img/spell/${spellR}.png`} />
@@ -137,7 +105,7 @@ export default function BodyChampionSkills(props: any) {
                                 )}
                             </div>
                         </div>
-                        <div className={styles.championDescription}>{info.lore}</div>
+                        <div className={styles.championDescription}>{firstObject.lore}</div>
                     </div>
                 </div>
             </div>

@@ -2,16 +2,26 @@ import Image from 'next/image'
 import styles from '../styles/ChampionCard.module.scss'
 import { useRouter } from 'next/router'
 
-export default function ChampionCard({ championName, championInfo }: any) {
+interface ChampionCardProps {
+    championName: string;
+    championInfo: {
+      tags: string[];
+    };
+  }
+
+export default function ChampionCard(props: ChampionCardProps) {
     const router = useRouter()
 
-    const tagsArray = championInfo.tags
+    const championName = props.championName
+    const championInfo = props.championInfo
 
+    const tagsArray = championInfo.tags
+    
     const handleClick = () => {
-        const myObject = championInfo
-        const stringifiedObject = JSON.stringify(myObject);
-        const encodedObject = encodeURIComponent(stringifiedObject);
-        router.push(`/champion/${championName}?myObject=${encodedObject}`)
+        router.push({
+            pathname: `/champion/${championName}`,
+            query: { name: championName },
+          });
     }
 
     return (
