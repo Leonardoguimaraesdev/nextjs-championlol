@@ -13,6 +13,8 @@ export default function BodyChampionSkills(props: any) {
     const obj = championData.data
     const firstObject: any = Object.values(obj)[0];
 
+    const [loading, setLoading] = useState(false);
+
     const [hoveringPassive, setHoveringPassive] = useState(false);
     const [hoveringQ, setHoveringQ] = useState(false);
     const [hoveringW, setHoveringW] = useState(false);
@@ -30,13 +32,23 @@ export default function BodyChampionSkills(props: any) {
     const spellR = spells[3].id
 
     const goToChampionList = () => {
-        router.push(`/`)
+        setLoading(true);
+        setTimeout(() => {
+            // Substitua esta linha pelo seu código para mudar de página.
+            router.push(`/`);
+        }, 2000);
+
     }
 
     return (
         <>
             <div className={styles.bodyContainer}>
                 <div className={styles.cardChampionSkills}>
+                    {loading && (
+                        <div className={styles.overlay}>
+                            <div className={styles.spinner}></div>
+                        </div>
+                    )}
                     <button onClick={goToChampionList}>Voltar</button>
                     <div className={styles.leftContainer}>
                         <Image className={styles.img} alt='Champion' width={230} height={410} src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championName}_0.jpg`} />
