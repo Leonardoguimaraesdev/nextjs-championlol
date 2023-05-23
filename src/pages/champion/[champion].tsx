@@ -1,4 +1,3 @@
-import styles from '../styles/ChampionSkills.module.scss'
 import Header from '../../components/Header'
 import Footer from '@/components/Footer';
 import BodyChampionSkills from '@/components/BodyChampionSkills';

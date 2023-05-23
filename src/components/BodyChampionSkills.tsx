@@ -36,8 +36,8 @@ export default function BodyChampionSkills(props: any) {
     return (
         <>
             <div className={styles.bodyContainer}>
-                <button onClick={goToChampionList}>Voltar</button>
                 <div className={styles.cardChampionSkills}>
+                    <button onClick={goToChampionList}>Voltar</button>
                     <div className={styles.leftContainer}>
                         <Image className={styles.img} alt='Champion' width={230} height={410} src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championName}_0.jpg`} />
                     </div>
