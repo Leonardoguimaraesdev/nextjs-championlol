@@ -25,14 +25,14 @@ export default function ChampionCard(props: ChampionCardProps) {
     }
 
     return (
-        <div className={styles.card} onClick={handleClick}>
+        <article className={styles.card} onClick={handleClick}>
             <Image alt='Champion' width={200} height={360} src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championName}_0.jpg`} />
-            <div className={styles.name}>{championName.toUpperCase()}</div>
+            <h1 className={styles.name}>{championName.toUpperCase()}</h1>
             <div className={styles.type}>
                 {tagsArray.map((tag: string, i: number) => {
                     return <Image className={styles.category} key={i} alt='Category' width={20} height={20} src={`/${tag}.png`} />
                 })}
             </div>
-        </div>
+        </article>
     )
 }

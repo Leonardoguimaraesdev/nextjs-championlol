@@ -42,8 +42,8 @@ export default function BodyChampionSkills(props: any) {
 
     return (
         <>
-            <div className={styles.bodyContainer}>
-                <div className={styles.cardChampionSkills}>
+            <section className={styles.bodyContainer}>
+                <article className={styles.cardChampionSkills}>
                     {loading && (
                         <div className={styles.overlay}>
                             <div className={styles.spinner}></div>
@@ -54,7 +54,7 @@ export default function BodyChampionSkills(props: any) {
                         <Image className={styles.img} alt='Champion' width={230} height={410} src={`http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championName}_0.jpg`} />
                     </div>
                     <div className={styles.rightContainer}>
-                        <div className={styles.title}>{title}</div>
+                        <h1 className={styles.title}>{title}</h1>
                         <div className={styles.skills}>
                             <div className={styles.skillsP}
                                 onMouseEnter={() => setHoveringPassive(true)}
@@ -117,10 +117,10 @@ export default function BodyChampionSkills(props: any) {
                                 )}
                             </div>
                         </div>
-                        <div className={styles.championDescription}>{firstObject.lore}</div>
+                        <p className={styles.championDescription}>{firstObject.lore}</p>
                     </div>
-                </div>
-            </div>
+                </article>
+            </section>
         </>
     );
 };

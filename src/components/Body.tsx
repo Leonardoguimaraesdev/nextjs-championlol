@@ -15,14 +15,14 @@ export default function Summoner({ initialChampionsInfo, initialChampionsName }:
 
   return (
     <>
-      <div className={styles.body}>
+      <section className={styles.body}>
         <Search onSearch={(value: string) => {
           setSearchTerm(value);
         }} />
         {filteredChampions.map((name: string, i: number) => {
           return <ChampionCard key={i} championName={name} championInfo={championsInfo[name]} />
         })}
-      </div>
+      </section>
     </>
   );
 };

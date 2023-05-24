@@ -18,10 +18,10 @@ export async function getServerSideProps(context:any) {
 export default function ChampionSkills({ championData }: any) {
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <main style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
             <Header />
             <BodyChampionSkills championData={championData} />
             <Footer />
-        </div>
+        </main>
     );
 };

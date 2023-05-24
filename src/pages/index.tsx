@@ -37,10 +37,10 @@ export interface SummonerProps {
 export default function ListChampions({ initialChampionsInfo, initialChampionsName }: SummonerProps) {
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+    <main style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <Header />
       <Body initialChampionsInfo={initialChampionsInfo} initialChampionsName={initialChampionsName} />
       <Footer />
-    </div>
+    </main>
   );
 };
