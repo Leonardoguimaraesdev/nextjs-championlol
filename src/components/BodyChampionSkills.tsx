@@ -33,10 +33,7 @@ export default function BodyChampionSkills(props: any) {
 
     const goToChampionList = () => {
         setLoading(true);
-        setTimeout(() => {
-            // Substitua esta linha pelo seu código para mudar de página.
-            router.push(`/`);
-        }, 2000);
+        router.push(`/`);
 
     }
 
